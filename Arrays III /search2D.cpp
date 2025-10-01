@@ -1,3 +1,11 @@
+/*
+Problem: Search a 2D Matrix
+Platform: Leetcode (Problem #74)
+Approach: Using Binary Search Algorithm with some modification using mathematical formulae for row and column indices
+Time Complexity: O(log(row*col))
+Space Complexity: O(1)
+*/
+
 bool searchMatrix(vector<vector<int>>& matrix, int target) {
           int s = 0;
           int row = matrix.size();
