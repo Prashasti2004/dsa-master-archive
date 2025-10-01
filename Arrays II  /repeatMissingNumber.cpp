@@ -35,6 +35,52 @@ vector<int> findTwoElement(vector<int>& arr) {
 
 
 //Approach 2
+vector<int> findTwoElement(vector<int>& arr){
+        int xr = 0;
+        int n = arr.size();
 
+        for(int i=0; i<n; i++){
+            xr = xr ^ arr[i];
+            xr = xr ^ (i+1);
+        }
+
+        int number = xr & (~(xr-1));
+
+        int zero = 0;
+        int one = 0;
+
+        //Groupism
+        for(int i=0; i<n; i++){
+            if((arr[i] & number) != 0){
+                one = one ^ arr[i];
+            }else{
+                zero = zero ^ arr[i];
+            }
+
+
+            if(((i+1) & number) != 0){
+                one = one ^ (i+1);
+            }else{
+                zero = zero ^ (i+1);
+            }
+
+        }
+
+        //see which is repeater
+        int cnt = 0;
+
+        for(int i=0; i<n; i++){
+            if(arr[i] == zero){
+                cnt++;
+            }
+        }
+
+        if(cnt == 2){
+            return {zero, one};
+        }
+
+
+        return {one, zero};
+}
 
 
